@@ -1,0 +1,38 @@
+.illustrations {
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.reversed {
+  flex-direction: row-reverse;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.description h2 {
+  font-weight: normal;
+}
+.advantages {
+  list-style: none;
+  padding-left: 0;
+}
+
+.advantages li {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.illuSvg {
+  width: 100%;
+  max-height: calc(100vw * 5 / 7);
+}
+
+.illuSvg text {
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: bolder;
+  letter-spacing: 0em;
+}
