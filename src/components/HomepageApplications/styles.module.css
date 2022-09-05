@@ -1,0 +1,13 @@
+.section {
+  padding: 2rem 0;
+  background: linear-gradient(
+    45deg,
+    var(--ifm-color-warning-bg) 0%,
+    var(--ifm-color-warning-bg-light) 100%
+  );
+  width: 100%;
+}
+
+.section h2 {
+  font-weight: normal;
+}

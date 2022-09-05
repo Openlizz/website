@@ -1,0 +1,18 @@
+.section {
+  padding: 2rem 0;
+  background: linear-gradient(
+    45deg,
+    var(--ifm-color-secondary-bg) 0%,
+    var(--ifm-color-secondary-bg-light) 100%
+  );
+  width: 100%;
+}
+
+.section h2 {
+  font-weight: normal;
+}
+
+.section ul {
+  list-style: none;
+  padding-left: 0;
+}

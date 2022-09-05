@@ -1,4 +1,5 @@
 import HomepageIllustrations from "@site/src/components/HomepageIllustrations";
+import HomepageTerminal from "@site/src/components/HomepageTerminal";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import OpenlizzImageUrl from "@site/static/img/openlizz.png";
@@ -47,6 +48,7 @@ export default function Home() {
       <HomepageHeader />
       <main>
         <HomepageIllustrations />
+        <HomepageTerminal />
       </main>
     </Layout>
   );
