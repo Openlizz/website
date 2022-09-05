@@ -1,0 +1,146 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: hsl(36, 100%, 50%);
+  --ifm-color-primary-dark: hsl(36, 100%, 32%);
+  --ifm-color-primary-darker: hsl(36, 100%, 30%);
+  --ifm-color-primary-darkest: hsl(36, 100%, 25%);
+  --ifm-color-primary-light: hsl(36, 100%, 39%);
+  --ifm-color-primary-lighter: hsl(36, 100%, 40%);
+  --ifm-color-primary-lightest: hsl(36, 100%, 46%);
+  --ifm-color-primary-bg: hsl(36, 100%, 80%);
+  --ifm-color-primary-bg-light: hsl(36, 100%, 90%);
+
+  --ifm-color-info: hsl(262, 54%, 47%);
+  --ifm-color-info-dark: hsl(262, 54%, 32%);
+  --ifm-color-info-darker: hsl(262, 54%, 30%);
+  --ifm-color-info-darkest: hsl(262, 54%, 25%);
+  --ifm-color-info-light: hsl(262, 54%, 39%);
+  --ifm-color-info-lighter: hsl(262, 54%, 40%);
+  --ifm-color-info-lightest: hsl(262, 54%, 46%);
+  --ifm-color-info-bg: hsl(262, 54%, 80%);
+  --ifm-color-info-bg-light: hsl(262, 54%, 90%);
+
+  --ifm-color-success: hsl(87, 51%, 53%);
+  --ifm-color-success-dark: hsl(87, 51%, 32%);
+  --ifm-color-success-darker: hsl(87, 51%, 30%);
+  --ifm-color-success-darkest: hsl(87, 51%, 25%);
+  --ifm-color-success-light: hsl(87, 51%, 39%);
+  --ifm-color-success-lighter: hsl(87, 51%, 40%);
+  --ifm-color-success-lightest: hsl(87, 51%, 46%);
+  --ifm-color-success-bg: hsl(87, 51%, 80%);
+  --ifm-color-success-bg-light: hsl(87, 51%, 90%);
+
+  --ifm-color-secondary: hsl(206, 90%, 53%);
+  --ifm-color-secondary-dark: hsl(206, 90%, 32%);
+  --ifm-color-secondary-darker: hsl(206, 90%, 30%);
+  --ifm-color-secondary-darkest: hsl(206, 90%, 25%);
+  --ifm-color-secondary-light: hsl(206, 90%, 39%);
+  --ifm-color-secondary-lighter: hsl(206, 90%, 40%);
+  --ifm-color-secondary-lightest: hsl(206, 90%, 46%);
+  --ifm-color-secondary-bg: hsl(206, 90%, 80%);
+  --ifm-color-secondary-bg-light: hsl(206, 90%, 90%);
+
+  --ifm-color-warning: hsl(54, 100%, 61%);
+  --ifm-color-warning-dark: hsl(54, 100%, 32%);
+  --ifm-color-warning-darker: hsl(54, 100%, 30%);
+  --ifm-color-warning-darkest: hsl(54, 100%, 25%);
+  --ifm-color-warning-light: hsl(54, 100%, 39%);
+  --ifm-color-warning-lighter: hsl(54, 100%, 40%);
+  --ifm-color-warning-lightest: hsl(54, 100%, 46%);
+  --ifm-color-warning-bg: hsl(54, 100%, 80%);
+  --ifm-color-warning-bg-light: hsl(54, 100%, 90%);
+
+  --ifm-color-danger: hsl(4, 90%, 58%);
+  --ifm-color-danger-dark: hsl(4, 90%, 32%);
+  --ifm-color-danger-darker: hsl(4, 90%, 30%);
+  --ifm-color-danger-darkest: hsl(4, 90%, 25%);
+  --ifm-color-danger-light: hsl(4, 90%, 39%);
+  --ifm-color-danger-lighter: hsl(4, 90%, 40%);
+  --ifm-color-danger-lightest: hsl(4, 90%, 46%);
+  --ifm-color-danger-bg: hsl(4, 90%, 80%);
+  --ifm-color-danger-bg-light: hsl(4, 90%, 90%);
+
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: hsl(27, 49%, 45%);
+  --ifm-color-primary-dark: hsl(27, 49%, 41%);
+  --ifm-color-primary-darker: hsl(27, 49%, 38%);
+  --ifm-color-primary-darkest: hsl(27, 49%, 32%);
+  --ifm-color-primary-light: hsl(27, 48%, 50%);
+  --ifm-color-primary-lighter: hsl(27, 49%, 52%);
+  --ifm-color-primary-lightest: hsl(27, 48%, 59%);
+  --ifm-color-primary-bg: hsl(27, 48%, 20%);
+  --ifm-color-primary-bg-light: hsl(27, 48%, 10%);
+
+  --ifm-color-primary: hsl(36, 100%, 50%);
+  --ifm-color-primary-dark: hsl(36, 100%, 41%);
+  --ifm-color-primary-darker: hsl(36, 100%, 38%);
+  --ifm-color-primary-darkest: hsl(36, 100%, 32%);
+  --ifm-color-primary-light: hsl(36, 100%, 50%);
+  --ifm-color-primary-lighter: hsl(36, 100%, 52%);
+  --ifm-color-primary-lightest: hsl(36, 100%, 59%);
+  --ifm-color-primary-bg: hsl(36, 100%, 20%);
+  --ifm-color-primary-bg-light: hsl(36, 100%, 10%);
+
+  --ifm-color-info: hsl(262, 54%, 47%);
+  --ifm-color-info-dark: hsl(262, 54%, 41%);
+  --ifm-color-info-darker: hsl(262, 54%, 38%);
+  --ifm-color-info-darkest: hsl(262, 54%, 32%);
+  --ifm-color-info-light: hsl(262, 54%, 50%);
+  --ifm-color-info-lighter: hsl(262, 54%, 52%);
+  --ifm-color-info-lightest: hsl(262, 54%, 59%);
+  --ifm-color-info-bg: hsl(262, 54%, 20%);
+  --ifm-color-info-bg-light: hsl(262, 54%, 10%);
+
+  --ifm-color-success: hsl(87, 51%, 53%);
+  --ifm-color-success-dark: hsl(87, 51%, 41%);
+  --ifm-color-success-darker: hsl(87, 51%, 38%);
+  --ifm-color-success-darkest: hsl(87, 51%, 32%);
+  --ifm-color-success-light: hsl(87, 51%, 50%);
+  --ifm-color-success-lighter: hsl(87, 51%, 52%);
+  --ifm-color-success-lightest: hsl(87, 51%, 59%);
+  --ifm-color-success-bg: hsl(87, 51%, 20%);
+  --ifm-color-success-bg-light: hsl(87, 51%, 10%);
+
+  --ifm-color-seconday: hsl(206, 90%, 53%);
+  --ifm-color-seconday-dark: hsl(206, 90%, 41%);
+  --ifm-color-seconday-darker: hsl(206, 90%, 38%);
+  --ifm-color-seconday-darkest: hsl(206, 90%, 32%);
+  --ifm-color-seconday-light: hsl(206, 90%, 50%);
+  --ifm-color-seconday-lighter: hsl(206, 90%, 52%);
+  --ifm-color-seconday-lightest: hsl(206, 90%, 59%);
+  --ifm-color-seconday-bg: hsl(206, 90%, 20%);
+  --ifm-color-seconday-bg-light: hsl(206, 90%, 10%);
+
+  --ifm-color-warning: hsl(54, 100%, 61%);
+  --ifm-color-warning-dark: hsl(54, 100%, 41%);
+  --ifm-color-warning-darker: hsl(54, 100%, 38%);
+  --ifm-color-warning-darkest: hsl(54, 100%, 32%);
+  --ifm-color-warning-light: hsl(54, 100%, 50%);
+  --ifm-color-warning-lighter: hsl(54, 100%, 52%);
+  --ifm-color-warning-lightest: hsl(54, 100%, 59%);
+  --ifm-color-warning-bg: hsl(54, 100%, 20%);
+  --ifm-color-warning-bg-light: hsl(54, 100%, 10%);
+
+  --ifm-color-danger: hsl(4, 90%, 58%);
+  --ifm-color-danger-dark: hsl(4, 90%, 41%);
+  --ifm-color-danger-darker: hsl(4, 90%, 38%);
+  --ifm-color-danger-darkest: hsl(4, 90%, 32%);
+  --ifm-color-danger-light: hsl(4, 90%, 50%);
+  --ifm-color-danger-lighter: hsl(4, 90%, 52%);
+  --ifm-color-danger-lightest: hsl(4, 90%, 59%);
+  --ifm-color-danger-bg: hsl(4, 90%, 20%);
+  --ifm-color-danger-bg-light: hsl(4, 90%, 10%);
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
