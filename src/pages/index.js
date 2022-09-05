@@ -1,4 +1,4 @@
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
+import HomepageIllustrations from "@site/src/components/HomepageIllustrations";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import OpenlizzImageUrl from "@site/static/img/openlizz.png";
@@ -16,12 +16,6 @@ function HomepageHeader() {
       </div>
       <div class="container">
         <h1 class="hero__title">{siteConfig.tagline}</h1>
-        {/* <p>
-          <b>Openlizz</b> is the combination of <b>Lizz</b>, a CLI to facilitate
-          the creation of a Flux2 managed k8s cluster and the deployment of
-          applications, and <b>Lizz compatible applications</b> to be installed
-          in one command with the best possible configuration.
-        </p> */}
         <p class="hero__subtitle">
           <b>Openlizz</b> is the combination of <b>Lizz</b> and the{" "}
           <b>Lizz compatible applications</b>.
@@ -48,12 +42,11 @@ export default function Home() {
   return (
     <Layout
       title={`Mainpage`}
-      description="Description will go into a meta tag in <head />"
+      description="Managing a GitOps Kubernetes cluster and deploying application has never made so easy! Openlizz is the combination of Lizz and the Lizz compatible applications."
     >
       <HomepageHeader />
-
       <main>
-        <HomepageFeatures />
+        <HomepageIllustrations />
       </main>
     </Layout>
   );
