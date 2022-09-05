@@ -24,7 +24,7 @@ export default function HomepageTerminal() {
       <div className="container">
         <div className="row">
           <div className="col col-6">
-            <h1 className="margin-vert--lg">See Lizz in action!</h1>
+            <h1 className="margin-vert--lg">See Lizz in action 🦥</h1>
             <h2>Lizz allows you to easily:</h2>
             <ul>
               <li>

@@ -22,13 +22,14 @@ export default function HomepageApplications() {
             </h2>
             <h2>
               There are already many Lizz compatible applications and more are
-              to come!
+              to come! You can also make your applications Lizz compatible in
+              only a couple of steps.
             </h2>
             <Link
-              className="button button--secondary button--lg margin-vert--lg"
+              className="button button--success button--lg margin-vert--lg"
               to="/docs/intro"
             >
-              Access the 5min tutorial
+              See all the available applications
             </Link>
           </div>
         </div>
