@@ -1,4 +1,6 @@
+import HomepageApplications from "@site/src/components/HomepageApplications";
 import HomepageIllustrations from "@site/src/components/HomepageIllustrations";
+import HomepageTerminal from "@site/src/components/HomepageTerminal";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import OpenlizzImageUrl from "@site/static/img/openlizz.png";
@@ -42,11 +44,13 @@ export default function Home() {
   return (
     <Layout
       title={`Mainpage`}
-      description="Managing a GitOps Kubernetes cluster and deploying application has never made so easy! Openlizz is the combination of Lizz and the Lizz compatible applications."
+      description="Manage a GitOps Kubernetes cluster and deploy applications has never made so easy! Openlizz is the combination of Lizz and the Lizz compatible applications."
     >
       <HomepageHeader />
       <main>
         <HomepageIllustrations />
+        <HomepageTerminal />
+        <HomepageApplications />
       </main>
     </Layout>
   );

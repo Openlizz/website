@@ -112,15 +112,15 @@
   --ifm-color-success-bg: hsl(87, 51%, 20%);
   --ifm-color-success-bg-light: hsl(87, 51%, 10%);
 
-  --ifm-color-seconday: hsl(206, 90%, 53%);
-  --ifm-color-seconday-dark: hsl(206, 90%, 41%);
-  --ifm-color-seconday-darker: hsl(206, 90%, 38%);
-  --ifm-color-seconday-darkest: hsl(206, 90%, 32%);
-  --ifm-color-seconday-light: hsl(206, 90%, 50%);
-  --ifm-color-seconday-lighter: hsl(206, 90%, 52%);
-  --ifm-color-seconday-lightest: hsl(206, 90%, 59%);
-  --ifm-color-seconday-bg: hsl(206, 90%, 20%);
-  --ifm-color-seconday-bg-light: hsl(206, 90%, 10%);
+  --ifm-color-secondary: hsl(206, 90%, 53%);
+  --ifm-color-secondary-dark: hsl(206, 90%, 41%);
+  --ifm-color-secondary-darker: hsl(206, 90%, 38%);
+  --ifm-color-secondary-darkest: hsl(206, 90%, 32%);
+  --ifm-color-secondary-light: hsl(206, 90%, 50%);
+  --ifm-color-secondary-lighter: hsl(206, 90%, 52%);
+  --ifm-color-secondary-lightest: hsl(206, 90%, 59%);
+  --ifm-color-secondary-bg: hsl(206, 90%, 20%);
+  --ifm-color-secondary-bg-light: hsl(206, 90%, 10%);
 
   --ifm-color-warning: hsl(54, 100%, 61%);
   --ifm-color-warning-dark: hsl(54, 100%, 41%);
