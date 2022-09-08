@@ -27,7 +27,7 @@ export default function HomepageApplications() {
             </h2>
             <Link
               className="button button--success button--lg margin-vert--lg"
-              to="/docs/intro"
+              to="/applications"
             >
               See all the available applications
             </Link>
