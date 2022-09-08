@@ -15,7 +15,7 @@ function Illustration({Svg, description, advantages, reversed}) {
           </ul>
         </div>
         <div className={clsx("col col--8")}>
-          <Svg className={styles.illuSvg} role="img" />
+          <Svg className="illuSvg" role="img" />
         </div>
       </div>
     </div>

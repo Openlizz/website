@@ -1,9 +1,33 @@
+---
+title: "lizz refresh gitlab"
+slug: /cli/lizz_refresh_gitlab
+description: ""
+---
+
+# lizz refresh gitlab
+
 ## lizz refresh gitlab
 
+Refresh an application from GitLab
 
+### Synopsis
+
+The refresh command is used to refresh an application already added to the GitLab cluster. It refreshs the
+application configuration with the current cluster state. It can also update the application by using the latest
+changes of the application origin GitLab repository.
 
 ```
 lizz refresh gitlab [flags]
+```
+
+### Examples
+
+```
+# Refresh an application to update its configuration regarding the current cluster state
+lizz refresh gitlab --owner=<group>  --fleet=<fleet repository name> --name=<application name>
+
+# Refresh an application and upgrade it
+lizz refresh gitlab --owner=<group>  --fleet=<fleet repository name> --name=<application name> --upgrade
 ```
 
 ### Options
@@ -38,5 +62,5 @@ lizz refresh gitlab [flags]
 
 ### SEE ALSO
 
-* [lizz refresh](../lizz_refresh/)	 - 
+* [lizz refresh](/docs/cli/lizz_refresh/)	 - Refresh an application
 

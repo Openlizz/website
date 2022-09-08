@@ -1,6 +1,19 @@
+---
+title: "lizz add"
+slug: /cli/lizz_add
+description: ""
+---
+
+# lizz add
+
 ## lizz add
 
+Add an application
 
+### Synopsis
+
+The add command is used to add a Lizz compatible application to the cluster. It updates the 
+fleet repository with the new application and creates a new repository for the new application.
 
 ### Options
 
@@ -39,8 +52,8 @@
 
 ### SEE ALSO
 
-* [lizz](../lizz/)	 - 
-* [lizz add git](../lizz_add_git/)	 - 
-* [lizz add github](../lizz_add_github/)	 - 
-* [lizz add gitlab](../lizz_add_gitlab/)	 - 
+* [lizz](/docs/cli/lizz/)	 - 
+* [lizz add git](/docs/cli/lizz_add_git/)	 - Add an application from and to any Git server
+* [lizz add github](/docs/cli/lizz_add_github/)	 - Add an application from and to GitHub
+* [lizz add gitlab](/docs/cli/lizz_add_gitlab/)	 - Add an application from and to GitLab
 

@@ -1,9 +1,33 @@
+---
+title: "lizz refresh github"
+slug: /cli/lizz_refresh_github
+description: ""
+---
+
+# lizz refresh github
+
 ## lizz refresh github
 
+Refresh an application from GitHub
 
+### Synopsis
+
+The refresh command is used to refresh an application already added to the GitHub cluster. It refreshs the
+application configuration with the current cluster state. It can also update the application by using the latest
+changes of the application origin GitHub repository.
 
 ```
 lizz refresh github [flags]
+```
+
+### Examples
+
+```
+# Refresh an application to update its configuration regarding the current cluster state
+lizz refresh github --owner=<group>  --fleet=<fleet repository name> --name=<application name>
+
+# Refresh an application and upgrade it
+lizz refresh github --owner=<group>  --fleet=<fleet repository name> --name=<application name> --upgrade
 ```
 
 ### Options
@@ -38,5 +62,5 @@ lizz refresh github [flags]
 
 ### SEE ALSO
 
-* [lizz refresh](../lizz_refresh/)	 - 
+* [lizz refresh](/docs/cli/lizz_refresh/)	 - Refresh an application
 

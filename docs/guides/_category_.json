@@ -1,0 +1,8 @@
+{
+  "label": "Guides",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Guides to discover the different commands of Lizz and how works the Openlizz system."
+  }
+}

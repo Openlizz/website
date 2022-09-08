@@ -1,9 +1,37 @@
+---
+title: "lizz init gitlab"
+slug: /cli/lizz_init_gitlab
+description: ""
+---
+
+# lizz init gitlab
+
 ## lizz init gitlab
 
+Initialize the fleet repository in GitLab
 
+### Synopsis
+
+The init command is used to initialize the cluster by creating the fleet repository in GitLab.
 
 ```
 lizz init gitlab [flags]
+```
+
+### Examples
+
+```
+# Create a GitLab API token and export it as an env var
+export GITLAB_TOKEN=<my-token>
+
+# Initialize the fleet repository using HTTPS token authentication
+lizz init gitlab --owner=<group> --destination=fleet --origin-url=https://gitlab.com/openlizz/fleet
+
+# Initialize the fleet repository using SSH authentication
+lizz init gitlab --owner=<group> --destination=fleet --origin-url=ssh://git@gitlab.com/openlizz/fleet
+
+# Initialize the fleet repository to a public repository on a personal account
+lizz init gitlab --owner=<user> --destination=fleet --origin-url=https://gitlab.com/openlizz/fleet --private=false --personal=true
 ```
 
 ### Options
@@ -36,5 +64,5 @@ lizz init gitlab [flags]
 
 ### SEE ALSO
 
-* [lizz init](../lizz_init/)	 - 
+* [lizz init](/docs/cli/lizz_init/)	 - Initialize the fleet repository
 

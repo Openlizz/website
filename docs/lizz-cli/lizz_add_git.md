@@ -1,6 +1,20 @@
+---
+title: "lizz add git"
+slug: /cli/lizz_add_git
+description: ""
+---
+
+# lizz add git
+
 ## lizz add git
 
+Add an application from and to any Git server
 
+### Synopsis
+
+The add git command is used to add a Lizz compatible application to the cluster when the 
+	repositories are stored in a Git server. It updates the fleet git repository with the new application 
+	and	creates a git repository for the new application.
 
 ```
 lizz add git [flags]
@@ -48,5 +62,5 @@ lizz add git [flags]
 
 ### SEE ALSO
 
-* [lizz add](../lizz_add/)	 - 
+* [lizz add](/docs/cli/lizz_add/)	 - Add an application
 

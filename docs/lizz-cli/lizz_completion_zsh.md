@@ -1,3 +1,11 @@
+---
+title: "lizz completion zsh"
+slug: /cli/lizz_completion_zsh
+description: ""
+---
+
+# lizz completion zsh
+
 ## lizz completion zsh
 
 Generate the autocompletion script for zsh
@@ -48,5 +56,5 @@ lizz completion zsh [flags]
 
 ### SEE ALSO
 
-* [lizz completion](../lizz_completion/)	 - Generate the autocompletion script for the specified shell
+* [lizz completion](/docs/cli/lizz_completion/)	 - Generate the autocompletion script for the specified shell
 

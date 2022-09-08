@@ -1,6 +1,20 @@
+---
+title: "lizz refresh"
+slug: /cli/lizz_refresh
+description: ""
+---
+
+# lizz refresh
+
 ## lizz refresh
 
+Refresh an application
 
+### Synopsis
+
+The refresh command is used to refresh an application already added to the cluster. It refreshs the
+application configuration with the current cluster state. It can also update the application by using the latest
+changes of the application origin repository.
 
 ### Options
 
@@ -28,8 +42,8 @@
 
 ### SEE ALSO
 
-* [lizz](../lizz/)	 - 
-* [lizz refresh git](../lizz_refresh_git/)	 - 
-* [lizz refresh github](../lizz_refresh_github/)	 - 
-* [lizz refresh gitlab](../lizz_refresh_gitlab/)	 - 
+* [lizz](/docs/cli/lizz/)	 - 
+* [lizz refresh git](/docs/cli/lizz_refresh_git/)	 - Refresh an application from any Git server
+* [lizz refresh github](/docs/cli/lizz_refresh_github/)	 - Refresh an application from GitHub
+* [lizz refresh gitlab](/docs/cli/lizz_refresh_gitlab/)	 - Refresh an application from GitLab
 

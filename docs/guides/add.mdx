@@ -1,0 +1,199 @@
+---
+sidebar_position: 1
+title: Add an application
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Add an application to the cluster
+
+Add an application to your cluster can be done using the `lizz add` command.
+This command does the following:
+
+- clone the application repository,
+- clone the cluster repository
+- render the application templates using the values
+- create a new repository for the application
+- add the new application to the fleet repository
+
+In this guide, you will see how to add different applications that demonstrate different usage of the `lizz add` command.
+
+## Requirements
+
+To add an application, you first need to have [a Kubernetes cluster initialized](./init).
+
+## Add the domain name application
+
+The [domain name application](https://github.com/Openlizz/application-domain-name) is a very simple application.
+Its only purpose is to contain the domain name value that can later be used by other applications.
+
+The domain name value is a [user value](http://localhost:3000/docs/concepts/values#user-value) that has to be given to the application using the `--set-value` flag.
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+```
+lizz add github --owner=$GITHUB_USER  --fleet=fleet --origin-url=https://github.com/openlizz/application-domain-name --path=./ --destination=domain-name --set-value value="local.gd" --personal
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+```
+lizz add gitlab --owner=$GITLAB_USER  --fleet=fleet --origin-url=https://gitlab.com/openlizz/applications/domain-name --path=./ --destination=domain-name --set-value value="local.gd" --personal
+```
+
+</TabItem>
+</Tabs>
+
+## Add the Nginx application
+
+The Nginx application deploys to the cluster an [ingress Nginx controller](https://kubernetes.github.io/ingress-nginx/).
+The application installs custom resources and therefore needs access to all the cluster namespaces.
+Give access to all the namespaces to an application can be done by adding the `--cluster-role` flag.
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+```
+lizz add github \
+  --owner=$GITHUB_USER \
+  --fleet=fleet \
+  --origin-url=https://github.com/openlizz/application-nginx \
+  --path=./kind \
+  --destination=nginx \
+  --cluster-role \
+  --personal
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+```
+lizz add gitlab \
+  --owner=$GITLAB_USER \
+  --fleet=fleet \
+  --origin-url=https://gitlab.com/openlizz/applications/nginx \
+  --path=./kind \
+  --destination=nginx \
+  --cluster-role \
+  --personal
+```
+
+</TabItem>
+</Tabs>
+
+## Add the Photoprism and the Homer applications
+
+The [Photoprism application](https://github.com/Openlizz/application-photoprism/) deploys [Photoprism](https://photoprism.app/) and the [Homer application](https://github.com/Openlizz/application-homer) deploys [Homer](https://github.com/bastienwirtz/homer).
+Those two application do not require a particular setup and can be added using the following commands:
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+```
+lizz add github --owner=$GITHUB_USER  --fleet=fleet --origin-url=https://github.com/openlizz/application-photoprism --path=./default --destination=photoprism --personal
+lizz add github --owner=$GITHUB_USER  --fleet=fleet --origin-url=https://github.com/openlizz/application-homer --path=./default --destination=homer --personal
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+```
+lizz add gitlab --owner=$GITLAB_USER  --fleet=fleet --origin-url=https://gitlab.com/openlizz/applications/photoprism --path=./default --destination=photoprism --personal
+lizz add gitlab --owner=$GITLAB_USER  --fleet=fleet --origin-url=https://gitlab.com/openlizz/applications/homer --path=./default --destination=homer --personal
+```
+
+</TabItem>
+</Tabs>
+
+## Reconcile the fleet repository
+
+With the add command, Lizz creates the application repositories and updates the fleet repository but Lizz does not interact with Kubernetes and therefore the applications are not deployed yet.
+
+The deployement is made by Flux and you can force Flux to reconcile and deploy the applications now by running:
+
+```
+flux reconcile source git flux-system
+```
+
+This will start the deployment process.
+You can watch the applications deployment with:
+
+```
+flux get kustomizations --all-namespaces --watch
+```
+
+After a couple of minutes, the output should be similar to:
+
+```
+NAMESPACE  	    NAME       	    REVISION    	SUSPENDED	READY	MESSAGE
+flux-system	    flux-system	    main/bd97a66	False    	True 	Applied revision: main/bd97a66
+flux-system	    applications	main/bd97a66	False	    True	Applied revision: main/bd97a66
+domain-name	    domain-name	    main/6d2c5f8	False	    True	Applied revision: main/6d2c5f8
+ingress-nginx	ingress-nginx	main/cb0da53	False	    True	Applied revision: main/cb0da53
+homer	        homer	        main/d9ee26f	False	    True	Applied revision: main/d9ee26f
+photoprism	    photoprism	    main/f2977cb	False	    True	Applied revision: main/f2977cb
+```
+
+You can check that the pods are running with:
+
+```
+kubectl get pod --all-namespaces
+```
+
+The output should be:
+
+```
+NAMESPACE            NAME                                         READY   STATUS      RESTARTS   AGE
+flux-system          helm-controller-6fd9c49774-2lsp7             1/1     Running     0          5m20s
+flux-system          kustomize-controller-5b6576ff96-nmjzl        1/1     Running     0          5m20s
+flux-system          notification-controller-54f474bd8-2xp98      1/1     Running     0          5m20s
+flux-system          source-controller-9ffdccb9f-67hz6            1/1     Running     0          5m20s
+homer                homer-6b94ddb4c7-4nxm6                       1/1     Running     0          114s
+ingress-nginx        ingress-nginx-admission-create-sxmls         0/1     Completed   0          2m57s
+ingress-nginx        ingress-nginx-admission-patch-4nhzv          0/1     Completed   1          2m57s
+ingress-nginx        ingress-nginx-controller-65b4b4df7d-ktxdm    1/1     Running     0          2m57s
+kube-system          coredns-6d4b75cb6d-4x5g9                     1/1     Running     0          5m38s
+kube-system          coredns-6d4b75cb6d-pfxh8                     1/1     Running     0          5m38s
+kube-system          etcd-kind-control-plane                      1/1     Running     0          5m53s
+kube-system          kindnet-k4g4t                                1/1     Running     0          5m38s
+kube-system          kube-apiserver-kind-control-plane            1/1     Running     0          5m53s
+kube-system          kube-controller-manager-kind-control-plane   1/1     Running     0          5m53s
+kube-system          kube-proxy-wsq6d                             1/1     Running     0          5m38s
+kube-system          kube-scheduler-kind-control-plane            1/1     Running     0          5m53s
+local-path-storage   local-path-provisioner-9cd9bd544-q7zkx       1/1     Running     0          5m38s
+photoprism           photoprism-86b879b6b7-fjlw2                  1/1     Running     0          113s
+```
+
+## Automatic configuration
+
+As we added the domain name and the Ngnix applications before adding the Photoprism and the Homer applications, these two latest applications have been added configured with an ingress and the correct domain name.
+You can see that by running:
+
+```
+kubectl get ingress --all-namespaces
+```
+
+The output should be:
+
+```
+NAMESPACE    NAME         CLASS    HOSTS                 ADDRESS     PORTS   AGE
+homer        homer        <none>   homer.local.gd        localhost   80      2m36s
+photoprism   photoprism   <none>   photoprism.local.gd   localhost   80      2m35s
+```
+
+Same thing with the Homer application which has been deployed with Photoprism in its homepage as the Photoprism application has been added before the Homer application.
+You can access the homepage by running `kubectl -n homer port-forward svc/homer 8080:8080` and accessing [localhost:8080](http://localhost:8080/), or directly by accessing [homer.local.gd](http://homer.local.gd) if your cluster is locally.
+
+You should see something similar to:
+
+![Homer application screenshot](./img/add/screenshot_homer_dark.png#dark-mode-only)
+![Homer application screenshot](./img/add/screenshot_homer_light.png#light-mode-only)
+
+## Next
+
+Your cluster has now applications 🥳
+
+You can see how to [remove the applications](./remove) you do not want anymore.

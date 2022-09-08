@@ -1,3 +1,11 @@
+---
+title: "lizz completion powershell"
+slug: /cli/lizz_completion_powershell
+description: ""
+---
+
+# lizz completion powershell
+
 ## lizz completion powershell
 
 Generate the autocompletion script for powershell
@@ -34,5 +42,5 @@ lizz completion powershell [flags]
 
 ### SEE ALSO
 
-* [lizz completion](../lizz_completion/)	 - Generate the autocompletion script for the specified shell
+* [lizz completion](/docs/cli/lizz_completion/)	 - Generate the autocompletion script for the specified shell
 

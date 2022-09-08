@@ -1,6 +1,18 @@
+---
+title: "lizz init"
+slug: /cli/lizz_init
+description: ""
+---
+
+# lizz init
+
 ## lizz init
 
+Initialize the fleet repository
 
+### Synopsis
+
+The init command is used to initialize the cluster by creating the fleet repository.
 
 ### Options
 
@@ -26,8 +38,8 @@
 
 ### SEE ALSO
 
-* [lizz](../lizz/)	 - 
-* [lizz init git](../lizz_init_git/)	 - 
-* [lizz init github](../lizz_init_github/)	 - 
-* [lizz init gitlab](../lizz_init_gitlab/)	 - 
+* [lizz](/docs/cli/lizz/)	 - 
+* [lizz init git](/docs/cli/lizz_init_git/)	 - Initialize the fleet repository in any Git server
+* [lizz init github](/docs/cli/lizz_init_github/)	 - Initialize the fleet repository in GitHub
+* [lizz init gitlab](/docs/cli/lizz_init_gitlab/)	 - Initialize the fleet repository in GitLab
 

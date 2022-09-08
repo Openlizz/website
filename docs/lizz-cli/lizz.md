@@ -1,3 +1,11 @@
+---
+title: "lizz"
+slug: /cli/lizz
+description: ""
+---
+
+# lizz
+
 ## lizz
 
 
@@ -12,10 +20,10 @@
 
 ### SEE ALSO
 
-* [lizz add](../lizz_add/)	 - 
-* [lizz completion](../lizz_completion/)	 - Generate the autocompletion script for the specified shell
-* [lizz init](../lizz_init/)	 - 
-* [lizz refresh](../lizz_refresh/)	 - 
-* [lizz remove](../lizz_remove/)	 - 
-* [lizz secret-management](../lizz_secret-management/)	 - 
+* [lizz add](/docs/cli/lizz_add/)	 - Add an application
+* [lizz completion](/docs/cli/lizz_completion/)	 - Generate the autocompletion script for the specified shell
+* [lizz init](/docs/cli/lizz_init/)	 - Initialize the fleet repository
+* [lizz refresh](/docs/cli/lizz_refresh/)	 - Refresh an application
+* [lizz remove](/docs/cli/lizz_remove/)	 - 
+* [lizz secret-management](/docs/cli/lizz_secret-management/)	 - 
 

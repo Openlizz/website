@@ -1,9 +1,59 @@
+---
+title: "lizz add github"
+slug: /cli/lizz_add_github
+description: ""
+---
+
+# lizz add github
+
 ## lizz add github
 
+Add an application from and to GitHub
 
+### Synopsis
+
+The add github command is used to add a Lizz compatible application to the cluster when the 
+	repositories are stored in GitHub. It updates the fleet GitHub repository with the new application and 
+	creates a new GitHub repository for the new application.
 
 ```
 lizz add github [flags]
+```
+
+### Examples
+
+```
+# Create a GitHub API token and export it as an env var
+export GITHUB_TOKEN=<my-token>
+
+# Add an application to a private repository using HTTPS token authentication
+lizz add github \
+	--owner=<organization> \
+	--fleet=<repository name of the fleet repository> \
+	--origin-url=<https github repository url of the application> \
+	--path=<path to kustomization in application repository> \
+	--destination=<repository name of the application>
+
+# Add an application with the cluster-role (access to all namespaces)
+lizz add github \
+	--owner=<organization> \
+	--fleet=<fleet repository name> \
+	--origin-url=<application url> \
+	--path=<path> \
+	--destination=<application repository name> \
+	--cluster-role
+
+# Add an application with explicit values
+lizz add github 
+	--owner=<organization> \
+	--fleet=<fleet repository name> \
+	--origin-url=<application url> \
+	--path=<path> \
+	--destination=<application repository name> \
+	--set-value <key1=val1,key2=val2 values>
+
+
+# This command share many flags with the flux bootstrap github command. See https://fluxcd.io/flux/cmd/flux_bootstrap_github/ to have more example how to use the flags.
 ```
 
 ### Options
@@ -51,5 +101,5 @@ lizz add github [flags]
 
 ### SEE ALSO
 
-* [lizz add](../lizz_add/)	 - 
+* [lizz add](/docs/cli/lizz_add/)	 - Add an application
 
