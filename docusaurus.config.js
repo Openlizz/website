@@ -63,6 +63,7 @@ const config = {
             position: "right",
             label: "Docs",
           },
+          {to: "/applications", position: "right", label: "Applications"},
           {to: "/blog", label: "Blog", position: "right"},
           {
             href: "https://github.com/openlizz/lizz",
