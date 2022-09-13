@@ -28,7 +28,7 @@ To add an application, you first need to have [a Kubernetes cluster initialized]
 The [domain name application](https://github.com/Openlizz/application-domain-name) is a very simple application.
 Its only purpose is to contain the domain name value that can later be used by other applications.
 
-The domain name value is a [user value](http://localhost:3000/docs/concepts/values#user-value) that has to be given to the application using the `--set-value` flag.
+The domain name value is a [user value](../concepts/values#user-value) that has to be given to the application using the `--set-value` flag.
 
 <Tabs groupId="git-providers">
 <TabItem value="github" label="GitHub">
@@ -49,7 +49,7 @@ lizz add gitlab --owner=$GITLAB_USER  --fleet=fleet --origin-url=https://gitlab.
 
 ## Add the Nginx application
 
-The Nginx application deploys to the cluster an [ingress Nginx controller](https://kubernetes.github.io/ingress-nginx/).
+The [Nginx application](https://github.com/Openlizz/application-nginx/) deploys to the cluster an [ingress Nginx controller](https://kubernetes.github.io/ingress-nginx/).
 The application installs custom resources and therefore needs access to all the cluster namespaces.
 Give access to all the namespaces to an application can be done by adding the `--cluster-role` flag.
 

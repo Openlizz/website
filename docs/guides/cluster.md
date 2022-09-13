@@ -13,7 +13,7 @@ You need to have kind installed. Please refer to the [official documentation](ht
 
 Run `kind version` to make sure kind is correctly installed.
 
-You also need to have the [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) CLIs installed.
+You also need to have the [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) CLI installed.
 
 ## Create the Kubernetes cluster locally
 
@@ -59,6 +59,6 @@ kind-control-plane   Ready    control-plane   10m   v1.24.0
 
 ## Next
 
-Your have a Kubernetes cluster locally 🥳
+Your have a Kubernetes cluster running locally 🥳
 
 You can now [initialize it](./init) to work with Lizz.

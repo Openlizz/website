@@ -1,9 +1,0 @@
-{
-  "label": "Lizz CLI",
-  "position": 4,
-  "link": {
-    "type": "generated-index",
-    "description": "The Lizz Command-Line Interface documentation.",
-    "slug": "/cli"
-  }
-}

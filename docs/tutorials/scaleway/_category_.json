@@ -1,0 +1,8 @@
+{
+    "label": "Deploy applications in Scaleway",
+    "position": 1,
+    "link": {
+        "type": "generated-index",
+        "description": "Follow this tutorial to deploy Nextcloud, Vaultwarden, and Photoprism in a Scaleway managed Kubernetes cluster."
+    }
+}
