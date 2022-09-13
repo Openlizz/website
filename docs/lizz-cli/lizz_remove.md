@@ -1,3 +1,11 @@
+---
+title: "lizz remove"
+slug: /cli/lizz_remove
+description: ""
+---
+
+# lizz remove
+
 ## lizz remove
 
 
@@ -22,8 +30,8 @@
 
 ### SEE ALSO
 
-* [lizz](../lizz/)	 - 
-* [lizz remove git](../lizz_remove_git/)	 - 
-* [lizz remove github](../lizz_remove_github/)	 - 
-* [lizz remove gitlab](../lizz_remove_gitlab/)	 - 
+* [lizz](/docs/cli/lizz/)	 - 
+* [lizz remove git](/docs/cli/lizz_remove_git/)	 - 
+* [lizz remove github](/docs/cli/lizz_remove_github/)	 - 
+* [lizz remove gitlab](/docs/cli/lizz_remove_gitlab/)	 - 
 

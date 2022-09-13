@@ -1,0 +1,173 @@
+---
+sidebar_position: 3
+title: Refresh an application
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Refresh an application of the cluster
+
+Refresh an application of your cluster can be done using the `lizz refresh` command.
+This corresponds moreorless to remove and add again the application
+
+In this guide, you will see how to refresh an application to refresh its configuration regarding the curring cluster state.
+
+## Requirements
+
+This guide follows the [add an application to the cluster](./add) guide.
+You need to have your cluster in the same state as at the end of that guide to follow this one.
+
+## Add the Nextcloud application
+
+First you will add the [Nextcloud application](https://github.com/Openlizz/application-nextcloud/) to change the cluster state.
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+```
+lizz add github --owner=$GITHUB_USER  --fleet=fleet --origin-url=https://github.com/openlizz/application-nextcloud --path=./default --destination=nextcloud --personal
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+```
+lizz add gitlab --owner=$GITLAB_USER  --fleet=fleet --origin-url=https://gitlab.com/openlizz/applications/nextcloud --path=./default --destination=nextcloud --personal
+```
+
+</TabItem>
+</Tabs>
+
+## Refresh the Homer application
+
+Second you can refresh the [Homer application](https://github.com/Openlizz/application-homer) application with the following command:
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+```
+lizz refresh github --owner=$GITHUB_USER  --fleet=fleet --name=homer --personal
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+```
+lizz refresh gitlab --owner=$GITLAB_USER  --fleet=fleet --name=homer --personal
+```
+
+</TabItem>
+</Tabs>
+
+The configuration of the application is refreshed and takes into account that Nextcloud has been added to the cluster.
+
+## Reconcile the fleet repository
+
+Again, for the changes to be actually deployed in the cluster, you need to force Flux to reconcile with the command:
+
+```
+flux reconcile source git flux-system
+```
+
+This will start the deployment process.
+You can watch the applications deployment with:
+
+```
+flux get kustomizations --all-namespaces --watch
+```
+
+After a couple of minutes, the output should be similar to:
+
+```
+NAMESPACE  	    NAME       	    REVISION    	SUSPENDED	READY	MESSAGE
+flux-system	    flux-system	    main/8ccc712	False    	True 	Applied revision: main/8ccc712
+flux-system	    applications	main/8ccc712	False	    True	Applied revision: main/8ccc712
+domain-name	    domain-name	    main/4fbb3eb	False	    True	Applied revision: main/4fbb3eb
+ingress-nginx	ingress-nginx	main/b3b5ffa	False	    True	Applied revision: main/b3b5ffa
+photoprism	    photoprism	    main/861c1f8	False	    True	Applied revision: main/861c1f8
+homer	        homer	        main/84663a3	False	    True	Applied revision: main/84663a3
+nextcloud	    nextcloud	    main/06d82f0	False	    True	Applied revision: main/06d82f0
+```
+
+You can check that the pods are running with:
+
+```
+kubectl get pod --all-namespaces
+```
+
+The output should be:
+
+```
+NAMESPACE            NAME                                         READY   STATUS      RESTARTS   AGE
+flux-system          helm-controller-6fd9c49774-smlld             1/1     Running     0          8m8s
+flux-system          kustomize-controller-5b6576ff96-x72tc        1/1     Running     0          8m8s
+flux-system          notification-controller-54f474bd8-cmbbk      1/1     Running     0          8m8s
+flux-system          source-controller-9ffdccb9f-smsvq            1/1     Running     0          8m8s
+homer                homer-6b94ddb4c7-86d5p                       1/1     Running     0          3m23s
+ingress-nginx        ingress-nginx-admission-create-t2lm5         0/1     Completed   0          4m43s
+ingress-nginx        ingress-nginx-admission-patch-fhrsn          0/1     Completed   0          4m43s
+ingress-nginx        ingress-nginx-controller-65b4b4df7d-q7j6w    1/1     Running     0          4m43s
+kube-system          coredns-6d4b75cb6d-jlrfg                     1/1     Running     0          11m
+kube-system          coredns-6d4b75cb6d-p9g7h                     1/1     Running     0          11m
+kube-system          etcd-kind-control-plane                      1/1     Running     0          11m
+kube-system          kindnet-9p28d                                1/1     Running     0          11m
+kube-system          kube-apiserver-kind-control-plane            1/1     Running     0          11m
+kube-system          kube-controller-manager-kind-control-plane   1/1     Running     0          11m
+kube-system          kube-proxy-wfjgq                             1/1     Running     0          11m
+kube-system          kube-scheduler-kind-control-plane            1/1     Running     0          11m
+local-path-storage   local-path-provisioner-9cd9bd544-hhbc7       1/1     Running     0          11m
+nextcloud            nextcloud-76686bdf49-fnhbm                   1/1     Running     0          96s
+photoprism           photoprism-86b879b6b7-44zxk                  1/1     Running     0          3m39s
+```
+
+## Configuration refreshed
+
+The configuration of the Homer application has been refreshed after the add of the Nextcloud application.
+Therefore if you access the Homer homepage you can see that Nextcloud is now in the homepage which means the Homer configuration has well been refreshed.
+
+You can access the homepage by running `kubectl -n homer port-forward svc/homer 8080:8080` and accessing [localhost:8080](http://localhost:8080/), or directly by accessing [homer.local.gd](http://homer.local.gd) if your cluster is locally.
+
+You should see something similar to:
+
+![Homer application screenshot](./img/refresh/screenshot_homer_dark.png#dark-mode-only)
+![Homer application screenshot](./img/refresh/screenshot_homer_light.png#light-mode-only)
+
+## Refresh and upgrade the Nextcloud application
+
+The refresh command can also be used to upgrade the application using the `--upgrade` flag.
+With this flag, the application is upgraded with the latest changes from the main Git branch or from `origin-branch` Git branch if specified of the origin repository.
+
+For the applications with a [Password](../concepts/values#password) value like the Nextcloud application, it is recommended to set this value when refreshing the application to avoid malfunction.
+This can be done like for the add command with the `--set-value` flag.
+
+The following command shows how best refresh and upgrade the Nextcloud application:
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+```
+lizz refresh github \
+    --owner=$GITHUB_USER  \
+    --fleet=fleet \
+    --name=nextcloud \
+    --upgrade \
+    --set-value adminPassword="xxxxxxx"
+    --personal
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+```
+lizz refresh gitlab \
+    --owner=$GITLAB_USER  \
+    --fleet=fleet \
+    --name=nextcloud \
+    --upgrade \
+    --set-value adminPassword="xxxxxxx"
+    --personal
+```
+
+</TabItem>
+</Tabs>

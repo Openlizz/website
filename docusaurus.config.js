@@ -18,10 +18,10 @@ const config = {
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
-  },
+  // i18n: {
+  //   defaultLocale: "en",
+  //   locales: ["en"],
+  // },
 
   presets: [
     [
@@ -63,6 +63,7 @@ const config = {
             position: "right",
             label: "Docs",
           },
+          {to: "/docs/tutorials", position: "right", label: "Tutorials"},
           {to: "/applications", position: "right", label: "Applications"},
           {to: "/blog", label: "Blog", position: "right"},
           {
@@ -114,7 +115,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Openlizz. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

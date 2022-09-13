@@ -1,0 +1,206 @@
+---
+sidebar_position: 0
+title: Initialize a cluster
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Initialize a Kubernetes cluster
+
+This guide shows how to initialize a Kubernetes cluster to work with Lizz.
+
+## Requirements
+
+To initialize a cluster, you first need to have the following:
+
+- a Kubernetes cluster,
+- the [flux](https://fluxcd.io) and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) CLIs installed
+
+## Export your credentials
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+Export your GitHub personal access token and username:
+
+```bash
+export GITHUB_TOKEN=<your-token>
+export GITHUB_USER=<your-username>
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+Export your GitLab personal access token and username:
+
+```bash
+export GITLAB_TOKEN=<your-token>
+export GITLAB_USER=<your-username>
+```
+
+</TabItem>
+</Tabs>
+
+## Create the fleet repository
+
+The following command creates the fleet repository with the correct structure and content for Lizz and Flux:
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+```
+lizz init github \
+  --owner=$GITHUB_USER \
+  --destination=fleet \
+  --origin-url=https://github.com/openlizz/fleet \
+  --personal
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+```
+lizz init gitlab \
+  --owner=$GITLAB_USER \
+  --destination=fleet \
+  --origin-url=https://gitlab.com/openlizz/fleet \
+  --personal
+```
+
+</TabItem>
+</Tabs>
+
+You should see the following output:
+
+```
+Initialize the cluster repository...
+ ✓ Clone the cluster repository
+ ✓ Create a new configuration for the cluster
+ ✓ Create new repository
+ ✓ Commit and push to the cluster repository
+```
+
+## Install Flux in your cluster
+
+For information about Flux and the bootstrap options, see the [Flux documentation](https://fluxcd.io/flux/installation/#bootstrap).
+
+Run the bootstrap command:
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+```
+flux bootstrap github \
+  --owner=$GITHUB_USER \
+  --repository=fleet \
+  --branch=main \
+  --path=cluster \
+  --personal
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+```
+flux bootstrap gitlab \
+  --owner=$GITLAB_USER \
+  --repository=fleet \
+  --branch=main \
+  --path=cluster \
+  --personal
+```
+
+</TabItem>
+</Tabs>
+
+The output is similar to:
+
+```
+► connecting to github.com
+► cloning branch "main" from Git repository
+✔ cloned repository
+► generating component manifests
+✔ generated component manifests
+✔ committed sync manifests to "main"
+► pushing component manifests
+► installing components in "flux-system" namespace
+✔ installed components
+✔ reconciled components
+► determining if source secret "flux-system/flux-system" exists
+► generating source secret
+✔ public key: xxx
+✔ configured deploy key "flux-system-main-flux-system-./cluster"
+► applying source secret "flux-system/flux-system"
+✔ reconciled source secret
+► generating sync manifests
+✔ generated sync manifests
+✔ committed sync manifests to "main"
+► pushing sync manifests
+► applying sync manifests
+✔ reconciled sync configuration
+◎ waiting for Kustomization "flux-system/flux-system" to be reconciled
+✔ Kustomization reconciled successfully
+► confirming components are healthy
+✔ helm-controller: deployment ready
+✔ kustomize-controller: deployment ready
+✔ notification-controller: deployment ready
+✔ source-controller: deployment ready
+✔ all components are healthy
+```
+
+The bootstrap command above does following:
+
+- Adds Flux component manifests to the repository
+- Deploys Flux Components to your Kubernetes Cluster
+- Configures Flux components to track the path /cluster/ in the repository
+
+## Configure Kubernetes secrets management
+
+In order to store secrets safely in public or private Git repositories, Lizz uses Mozilla’s [SOPS](https://github.com/mozilla/sops).
+
+Run the following command to configure secret management:
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+```
+lizz secret-management github --owner=$GITHUB_USER --fleet=fleet
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+```
+lizz secret-management gitlab --owner=$GITLAB_USER --fleet=fleet
+```
+
+</TabItem>
+</Tabs>
+
+The output is similar to:
+
+```
+Configure secret management...
+ ✓ Clone the cluster repository
+ ✓ Open and read the cluster configuration file
+ ✓ Configure the secret management
+ ✓ Commit and push to the cluster repository
+Run `kubectl apply -f secret.yaml` to apply the secret to the cluster
+```
+
+This command generates the `secret.yaml` file which contains the [age](https://github.com/FiloSottile/age) private key used to decrypt secrets.
+You need to store the private key in your Kubernetes cluster by running:
+
+```
+kubectl apply -f secret.yaml
+```
+
+Keep safe the private key or the `secret.yaml` file as this is the **only** way to decrypt the secrets stored in the Git repositories.
+You will need this key in case of a disaster to restore your cluster.
+
+## Next
+
+Your cluster is now initialized to work with Lizz 🥳
+
+You can [add an application](./add) to it.

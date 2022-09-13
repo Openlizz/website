@@ -144,3 +144,20 @@
 
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+[data-theme="light"] img[src$="#dark-mode-only"],
+[data-theme="dark"] img[src$="#light-mode-only"] {
+  display: none;
+}
+
+.illuSvg {
+  width: 100%;
+  max-height: calc(100vw * 5 / 7);
+}
+
+.illuSvg text {
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: bolder;
+  letter-spacing: 0em;
+}

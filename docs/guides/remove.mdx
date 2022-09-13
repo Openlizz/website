@@ -1,0 +1,62 @@
+---
+sidebar_position: 2
+title: Remove an application
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Remove an application from the cluster
+
+This guide show how to remove an application from you cluster.
+
+## Requirements
+
+To remove an application, you first need to have [added an application to your cluster](./add).
+
+## Remove an application
+
+You can remove an application with the following command:
+
+<Tabs groupId="git-providers">
+<TabItem value="github" label="GitHub">
+
+```
+lizz remove github --owner=$GITHUB_USER  --fleet=fleet --name=<name of the application> --personal
+```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
+```
+lizz remove gitlab --owner=$GITLAB_USER  --fleet=fleet --name=<name of the application> --personal
+```
+
+</TabItem>
+</Tabs>
+
+The output is similar to:
+
+```
+Remove application...
+ ✓ Clone the cluster repository
+ ✓ Open and read the cluster configuration file
+ ✓ Remove the application from the cluster
+ ✓ Commit and push to the cluster repository
+```
+
+This command removes the application from the fleet repository but **do not delete the application repository**.
+
+## Reconcile the fleet repository
+
+As with the add command, with the remove command you need to reconcile the fleet repository to apply the changes directly:
+
+```
+flux reconcile source git flux-system
+```
+
+## Next
+
+You have seen how remove an application using Lizz 🥳
+
+You can see how to [refresh an applications](./refresh) to refresh its configuration.

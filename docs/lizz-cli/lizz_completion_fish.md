@@ -1,3 +1,11 @@
+---
+title: "lizz completion fish"
+slug: /cli/lizz_completion_fish
+description: ""
+---
+
+# lizz completion fish
+
 ## lizz completion fish
 
 Generate the autocompletion script for fish
@@ -37,5 +45,5 @@ lizz completion fish [flags]
 
 ### SEE ALSO
 
-* [lizz completion](../lizz_completion/)	 - Generate the autocompletion script for the specified shell
+* [lizz completion](/docs/cli/lizz_completion/)	 - Generate the autocompletion script for the specified shell
 

@@ -33,15 +33,3 @@
   font-size: larger;
   font-weight: bold;
 }
-
-.illuSvg {
-  width: 100%;
-  max-height: calc(100vw * 5 / 7);
-}
-
-.illuSvg text {
-  font-size: 14px;
-  font-family: inherit;
-  font-weight: bolder;
-  letter-spacing: 0em;
-}

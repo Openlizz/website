@@ -1,3 +1,11 @@
+---
+title: "lizz secret-management github"
+slug: /cli/lizz_secret-management_github
+description: ""
+---
+
+# lizz secret-management github
+
 ## lizz secret-management github
 
 
@@ -34,5 +42,5 @@ lizz secret-management github [flags]
 
 ### SEE ALSO
 
-* [lizz secret-management](../lizz_secret-management/)	 - 
+* [lizz secret-management](/docs/cli/lizz_secret-management/)	 - 
 

@@ -1,9 +1,37 @@
+---
+title: "lizz init github"
+slug: /cli/lizz_init_github
+description: ""
+---
+
+# lizz init github
+
 ## lizz init github
 
+Initialize the fleet repository in GitHub
 
+### Synopsis
+
+The init command is used to initialize the cluster by creating the fleet repository in GitHub.
 
 ```
 lizz init github [flags]
+```
+
+### Examples
+
+```
+# Create a GitHub API token and export it as an env var
+export GITHUB_TOKEN=<my-token>
+
+# Initialize the fleet repository using HTTPS token authentication
+lizz init github --owner=<organization> --destination=fleet --origin-url=https://github.com/openlizz/fleet
+
+# Initialize the fleet repository using SSH authentication
+lizz init github --owner=<organization> --destination=fleet --origin-url=ssh://git@github.com/openlizz/fleet
+
+# Initialize the fleet repository to a public repository on a personal account
+lizz init github --owner=<user> --destination=fleet --origin-url=https://github.com/openlizz/fleet --private=false --personal=true
 ```
 
 ### Options
@@ -36,5 +64,5 @@ lizz init github [flags]
 
 ### SEE ALSO
 
-* [lizz init](../lizz_init/)	 - 
+* [lizz init](/docs/cli/lizz_init/)	 - Initialize the fleet repository
 

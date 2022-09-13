@@ -1,18 +1,17 @@
 import "asciinema-player/dist/bundle/asciinema-player.css";
 
-import * as AsciinemaPlayerLibrary from "asciinema-player";
-
 import React, {useEffect, useRef} from "react";
 
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import Link from "@docusaurus/Link";
 import styles from "./styles.module.css";
 
-const AsciinemaPlayer = ({src, ...asciinemaOptions}) => {
+const AsciinemaPlayer = ({src, lib, ...asciinemaOptions}) => {
   const ref = useRef(null);
 
   useEffect(() => {
     const currentRef = ref.current;
-    AsciinemaPlayerLibrary.create(src, currentRef, asciinemaOptions);
+    lib.create(src, currentRef, asciinemaOptions);
   }, [src]);
 
   return <div ref={ref} />;
@@ -45,12 +44,20 @@ export default function HomepageTerminal() {
             </Link>
           </div>
           <div className="col col-6">
-            <AsciinemaPlayer
-              src="data:text/plain;base64,eyJ2ZXJzaW9uIjogMiwgIndpZHRoIjogODAsICJoZWlnaHQiOiAyNH0KWzAuMSwgIm8iLCAiaGVsbCJdClswLjUsICJvIiwgIm8gIl0KWzIuNSwgIm8iLCAid29ybGQhXG5cciJdCg=="
-              rows={30}
-              idleTimeLimit={3}
-              preload={true}
-            />
+            <BrowserOnly fallback={<div>Loading...</div>}>
+              {() => {
+                const AsciinemaPlayerLibrary = require("asciinema-player");
+                return (
+                  <AsciinemaPlayer
+                    src="data:text/plain;base64,eyJ2ZXJzaW9uIjogMiwgIndpZHRoIjogODAsICJoZWlnaHQiOiAyNH0KWzAuMSwgIm8iLCAiaGVsbCJdClswLjUsICJvIiwgIm8gIl0KWzIuNSwgIm8iLCAid29ybGQhXG5cciJdCg=="
+                    lib={AsciinemaPlayerLibrary}
+                    rows={30}
+                    idleTimeLimit={3}
+                    preload={true}
+                  />
+                );
+              }}
+            </BrowserOnly>
           </div>
         </div>
       </div>
