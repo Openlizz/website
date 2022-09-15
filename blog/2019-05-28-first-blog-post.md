@@ -295,3 +295,25 @@ openssl x509 -req -sha512 -days 365 \
 export TLS_CRT=$(cat HOME-CLUSTER-CA.crt | base64)
 export TLS_KEY=$(cat HOME-CLUSTER-CA.key | base64)
 ```
+
+```
+lizz add github \
+    --owner=$GITHUB_USER  \
+    --fleet=fleet \
+    --origin-url=https://github.com/openlizz/application-cert-manager \
+    --path=./default \
+    --destination=cert-manager \
+    --cluster-role
+
+lizz add github \
+    --owner=$GITHUB_USER  \
+    --fleet=fleet \
+    --origin-url=https://github.com/openlizz/application-cluster-issuer \
+    --path=./ca \
+    --destination=cluster-issuer \
+    --cluster-role \
+    --set-value b64crt=$TLS_CRT \
+    --set-value b64key=$TLS_KEY
+
+flux reconcile source git flux-system
+```
