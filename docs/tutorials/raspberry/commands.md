@@ -1,7 +1,6 @@
 ---
-slug: rasberry-pis-cluster
-title: Use Lizz to manage a Rasberry Pis cluster
-authors: remi
+sidebar_position: 0
+title: Commands in vrac
 ---
 
 # Use Lizz to manage a Rasberry Pis cluster
