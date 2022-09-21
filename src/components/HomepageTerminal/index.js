@@ -49,11 +49,12 @@ export default function HomepageTerminal() {
                 const AsciinemaPlayerLibrary = require("asciinema-player");
                 return (
                   <AsciinemaPlayer
-                    src="data:text/plain;base64,eyJ2ZXJzaW9uIjogMiwgIndpZHRoIjogODAsICJoZWlnaHQiOiAyNH0KWzAuMSwgIm8iLCAiaGVsbCJdClswLjUsICJvIiwgIm8gIl0KWzIuNSwgIm8iLCAid29ybGQhXG5cciJdCg=="
+                    src={"/asciinema/getting_started.cast"}
                     lib={AsciinemaPlayerLibrary}
                     rows={30}
-                    idleTimeLimit={3}
+                    idleTimeLimit={1}
                     preload={true}
+                    speed={3}
                   />
                 );
               }}
