@@ -1,0 +1,8 @@
+{
+    "label": "Manage your Rasberry Pis cluster",
+    "position": 2,
+    "link": {
+        "type": "generated-index",
+        "description": "Follow this tutorial to create your homelab with Rasberry Pis and Lizz."
+    }
+}

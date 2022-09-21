@@ -65,7 +65,7 @@ const config = {
           },
           {to: "/docs/tutorials", position: "right", label: "Tutorials"},
           {to: "/applications", position: "right", label: "Applications"},
-          {to: "/blog", label: "Blog", position: "right"},
+          // {to: "/blog", label: "Blog", position: "right"},
           {
             href: "https://github.com/openlizz/lizz",
             label: "GitHub",
@@ -79,43 +79,59 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
+                label: "Installation",
+                to: "/docs/installation",
+              },
+              {
+                label: "Get Started",
                 to: "/docs/intro",
               },
-            ],
-          },
-          {
-            title: "Community",
-            items: [
               {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+                label: "Concepts",
+                to: "/docs/category/concepts",
               },
               {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
+                label: "Guides",
+                to: "/docs/category/guides",
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/docusaurus",
+                label: "Lizz CLI",
+                to: "/docs/category/lizz-cli",
               },
             ],
           },
           {
-            title: "More",
+            title: "Tutorials",
             items: [
               {
-                label: "Blog",
-                to: "/blog",
+                label: "Scaleway",
+                to: "/docs/category/deploy-applications-in-scaleway",
+              },
+              {
+                label: "Rasberry Pis",
+                to: "/docs/category/manage-your-rasberry-pis-cluster",
+              },
+            ],
+          },
+          {
+            title: "Other",
+            items: [
+              {
+                label: "Applications",
+                href: "/applications",
               },
               {
                 label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                href: "https://github.com/openlizz",
+              },
+              {
+                label: "GitLab",
+                href: "https://gitlab.com/openlizz",
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Openlizz. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Openlizz.`,
       },
       prism: {
         theme: lightCodeTheme,
