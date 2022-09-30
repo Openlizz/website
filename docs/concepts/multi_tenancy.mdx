@@ -12,23 +12,23 @@ import RepositoriesSvg from "@site/static/img/illustrations/repositories.svg";
 
 According to the [Flux documentation](https://fluxcd.io/flux/concepts/#gitops):
 
-_GitOps is a way of managing your infrastructure and applications so that whole system is described declaratively and version controlled (most likely in a Git repository), and having an automated process that ensures that the deployed environment matches the state specified in a repository._
+_GitOps is a way of managing your infrastructure and applications so that the whole system is described declaratively and version controlled (most likely in a Git repository), and has an automated process that ensures that the deployed environment matches the state specified in a repository._
 
 To learn more about GitOps, have a look at [“What is GitOps?”](https://www.gitops.tech/#what-is-gitops).
 
 ## Multi-tenancy
 
 In a multi-tenant GitOps managed cluster, the infrastructure is described in one repository usually called _platform admin repository_ or _fleet repository_, and the applications are described in separate repositories.
-This allows to define permissions depending on the role.
+This allows defining permissions depending on the role.
 The platform admin has access to the fleet repository and onboards and manages the tenants.
 The tenants only have access to their tenant repository and therefore to the namespaces assigned to them by the platform admin.
 They cannot act outside the scope defined by the platform admin.
 The roles in a multi-tenant cluster are described in detail [here](https://github.com/fluxcd/flux2-multi-tenancy#roles).
 
-Lizz follows the multi-tenant structure and considere each application is associated to a tenant.
+Lizz follows the multi-tenant structure and considers each application is associated with a tenant.
 Therefore each application has its repository and can only access its namespace.
 Some applications need access beyond their namespace to create custom resources for instance.
-In that case, it is possible to give to an application access to all namespaces by adding the `--cluster-role` flag to the `lizz add` command.
+In that case, it is possible to give the application access to all namespaces by adding the `--cluster-role` flag to the `lizz add` command.
 
 As maintaining a multi-tenant GitOps cluster can be complex, Lizz takes care of the following steps:
 

@@ -51,7 +51,7 @@ ingress-nginx-controller-b7b55cccc-t7qv7   1/1     Running     0          97s
 The [cert-manager application](https://github.com/Openlizz/application-cert-manager) installed the [cert-manager helm chart](https://cert-manager.io/docs/installation/helm/) in your cluster.
 It is a certificate controller for Kubernetes and will allow you to obtain a TLS certificate to enable HTTPS.
 
-The [cluster-issuer application](https://github.com/Openlizz/application-cluster-issuer) is coupled with the cert-manager application and installed the [cluster issuer](https://cert-manager.io/docs/configuration/) of your choice depending of the `--path` used.
+The [cluster-issuer application](https://github.com/Openlizz/application-cluster-issuer) is coupled with the cert-manager application and installed the [cluster issuer](https://cert-manager.io/docs/configuration/) of your choice depending on the `--path` used.
 As the Rasberry Pis cluster is in a private network, you can use a [CA issuer using a SelfSigned certificate](https://cert-manager.io/docs/configuration/ca/#deployment) with the `./selfsigned_ca` path.
 
 ```
@@ -118,6 +118,6 @@ kubectl get secrets -n cert-manager ca-key-pair -o 'go-template={{index .data "c
 This creates a `ca.crt` file on your file system which contains the certificate.
 
 Trusting the CA certificate is a process that varies across operating systems.
-The process is well explained in [this blog post](https://betterprogramming.pub/how-to-create-trusted-ssl-certificates-for-your-local-development-13fd5aad29c6#ee40).
+The process is well explained on [this blog post](https://betterprogramming.pub/how-to-create-trusted-ssl-certificates-for-your-local-development-13fd5aad29c6#ee40).
 
 For macOS, you need to import the file in keychain and "Trust" the certificate in its settings.

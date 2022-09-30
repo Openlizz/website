@@ -5,12 +5,12 @@ title: Get Started
 
 # Get Started with Lizz
 
-This tutorial shows you how to initialize a Lizz cluster, setup the secrets management, and deploy a sample application using Lizz.
+This tutorial shows you how to initialize a Lizz cluster, set up the secrets management, and deploy a sample application using Lizz.
 
 ## Before you begin
 
-Lizz works together with [Flux](https://fluxcd.io) that is a GitOps tool in charge of keeping in sync the cluster states and the Git repositories.
-See the [Flux installation page](https://fluxcd.io/flux/installation/) in the documentation to install it in your machine.
+Lizz works together with [Flux](https://fluxcd.io) which is a GitOps tool in charge of keeping in sync the cluster states and the Git repositories.
+See the [Flux installation page](https://fluxcd.io/flux/installation/) in the documentation to install it on your machine.
 
 To follow this tutorial, you will also need:
 
@@ -39,7 +39,7 @@ Check you have everything needed by running the following commands:
 flux --version && lizz --version && kind --version && kubectl version --client
 ```
 
-The output shoud be similar to:
+The output should be similar to:
 
 ```
 flux version 0.33.0
@@ -82,11 +82,11 @@ The output is similar to:
 
 ## Create the fleet repository
 
-Lizz organizes the repositories in the multi-tenant way.
-This means each tenant (or application in the context of Lizz) has its repository and a limited access to the cluster.
+Lizz organizes the repositories in a multi-tenant way.
+This means each tenant (or application in the context of Lizz) has its repository and limited access to the cluster.
 The platform admin repository which contains information about the cluster and the tenants is called the fleet repository.
 
-For more information about managing multi-tenant clusters with Git and Flux, you can have a look to [this GitHub repository](https://github.com/fluxcd/flux2-multi-tenancy).
+For more information about managing multi-tenant clusters with Git and Flux, you can have a look at [this GitHub repository](https://github.com/fluxcd/flux2-multi-tenancy).
 
 The following command creates the fleet repository with the correct structure and content for Lizz and Flux:
 
@@ -158,7 +158,7 @@ The output is similar to:
 ✔ all components are healthy
 ```
 
-The bootstrap command above does following:
+The bootstrap command above does the following:
 
 - Adds Flux component manifests to the repository
 - Deploys Flux Components to your Kubernetes Cluster
@@ -166,7 +166,7 @@ The bootstrap command above does following:
 
 ## Configure Kubernetes secrets management
 
-In order to store secrets safely in public or private Git repositories, Lizz uses Mozilla’s [SOPS](https://github.com/mozilla/sops).
+To store secrets safely in public or private Git repositories, Lizz uses Mozilla’s [SOPS](https://github.com/mozilla/sops).
 
 Run the following command to configure secret management:
 
@@ -271,4 +271,4 @@ You should see something similar to:
 
 In this tutorial, you have seen how to setup your cluster to work with Lizz in a multi-tenant GitOps setup powered by Flux.
 
-To continue to discover Lizz and its power, you can have a look to the rest of the documentation.
+To continue to discover Lizz and its power, you can have a look at the rest of the documentation.

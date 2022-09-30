@@ -20,15 +20,15 @@ function HomepageHeader() {
         <h1 class="hero__title">{siteConfig.tagline}</h1>
         <p class="hero__subtitle">
           <b>Openlizz</b> is the combination of <b>Lizz</b> and the{" "}
-          <b>Lizz compatible applications</b>.
+          <b>Lizz-compatible applications</b>.
         </p>
         <p class="hero__subtitle">
           <b>Lizz</b> is a CLI to facilitate the creation of a Flux2 managed k8s
           cluster and the deployment of applications.
         </p>
         <p class="hero__subtitle">
-          <b>Lizz compatible applications</b> can be installed in one command
-          with the best possible configuration depending of the applications
+          <b>Lizz-compatible applications</b> can be installed in one command
+          with the best possible configuration depending on the applications
           already deployed.
         </p>
         <Link className="button button--primary button--lg" to="/docs/intro">
@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <Layout
       title={`Mainpage`}
-      description="Manage a GitOps Kubernetes cluster and deploy applications has never made so easy! Openlizz is the combination of Lizz and the Lizz compatible applications."
+      description="Manage a GitOps Kubernetes cluster and deploy applications has never made so easy! Openlizz is the combination of Lizz and the Lizz-compatible applications."
     >
       <HomepageHeader />
       <main>
