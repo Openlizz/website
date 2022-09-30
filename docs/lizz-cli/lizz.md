@@ -24,6 +24,6 @@ description: ""
 * [lizz completion](/docs/cli/lizz_completion/)	 - Generate the autocompletion script for the specified shell
 * [lizz init](/docs/cli/lizz_init/)	 - Initialize the fleet repository
 * [lizz refresh](/docs/cli/lizz_refresh/)	 - Refresh an application
-* [lizz remove](/docs/cli/lizz_remove/)	 - 
-* [lizz secret-management](/docs/cli/lizz_secret-management/)	 - 
+* [lizz remove](/docs/cli/lizz_remove/)	 - Remove an application
+* [lizz secret-management](/docs/cli/lizz_secret-management/)	 - Configure secret management
 

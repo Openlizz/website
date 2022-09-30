@@ -8,10 +8,21 @@ description: ""
 
 ## lizz remove gitlab
 
+Remove an application from GitLab
 
+### Synopsis
+
+The remove command is used to remove an application already added to the GitLab cluster. The remove command does not delete the application repository.
 
 ```
 lizz remove gitlab [flags]
+```
+
+### Examples
+
+```
+# Remove an application from the cluster
+lizz remove gitlab --owner=<group>  --fleet=<fleet repository name> --name=<application name>
 ```
 
 ### Options
@@ -40,5 +51,5 @@ lizz remove gitlab [flags]
 
 ### SEE ALSO
 
-* [lizz remove](/docs/cli/lizz_remove/)	 - 
+* [lizz remove](/docs/cli/lizz_remove/)	 - Remove an application
 

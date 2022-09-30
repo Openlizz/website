@@ -12,8 +12,8 @@ Add an application from and to GitLab
 
 ### Synopsis
 
-The add gitlab command is used to add a Lizz-compatible application to the cluster when the
-repositories are stored in GitLab. It updates the fleet GitLab repository with the new application and
+The add gitlab command is used to add a Lizz compatible application to the cluster when the 
+repositories are stored in GitLab. It updates the fleet GitLab repository with the new application and 
 creates a new GitLab repository for the new application.
 
 ```
@@ -44,7 +44,7 @@ lizz add gitlab \
 	--cluster-role
 
 # Add an application with explicit values
-lizz add gitlab
+lizz add gitlab 
 	--owner=<group> \
 	--fleet=<fleet repository name> \
 	--origin-url=<application url> \
@@ -101,4 +101,5 @@ lizz add gitlab
 
 ### SEE ALSO
 
-- [lizz add](/docs/cli/lizz_add/) - Add an application
+* [lizz add](/docs/cli/lizz_add/)	 - Add an application
+

@@ -8,7 +8,11 @@ description: ""
 
 ## lizz remove
 
+Remove an application
 
+### Synopsis
+
+The remove command is used to remove an application added to the cluster.
 
 ### Options
 
@@ -31,7 +35,7 @@ description: ""
 ### SEE ALSO
 
 * [lizz](/docs/cli/lizz/)	 - 
-* [lizz remove git](/docs/cli/lizz_remove_git/)	 - 
-* [lizz remove github](/docs/cli/lizz_remove_github/)	 - 
-* [lizz remove gitlab](/docs/cli/lizz_remove_gitlab/)	 - 
+* [lizz remove git](/docs/cli/lizz_remove_git/)	 - Remove an application from any Git server
+* [lizz remove github](/docs/cli/lizz_remove_github/)	 - Remove an application from GitHub
+* [lizz remove gitlab](/docs/cli/lizz_remove_gitlab/)	 - Remove an application from GitLab
 

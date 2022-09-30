@@ -8,7 +8,11 @@ description: ""
 
 ## lizz secret-management git
 
+Configure secret management for any Git server
 
+### Synopsis
+
+The secret-management command is used to configure Kubernetes secrets management with Mozilla SOPS. It generates a age key, store the public key in the fleet repository, and store the private key in a yaml file to apply it.
 
 ```
 lizz secret-management git [flags]
@@ -39,5 +43,5 @@ lizz secret-management git [flags]
 
 ### SEE ALSO
 
-* [lizz secret-management](/docs/cli/lizz_secret-management/)	 - 
+* [lizz secret-management](/docs/cli/lizz_secret-management/)	 - Configure secret management
 

@@ -12,9 +12,9 @@ Add an application from and to GitHub
 
 ### Synopsis
 
-The add github command is used to add a Lizz-compatible application to the cluster when the
-repositories are stored in GitHub. It updates the fleet GitHub repository with the new application and
-creates a new GitHub repository for the new application.
+The add github command is used to add a Lizz compatible application to the cluster when the 
+	repositories are stored in GitHub. It updates the fleet GitHub repository with the new application and 
+	creates a new GitHub repository for the new application.
 
 ```
 lizz add github [flags]
@@ -44,7 +44,7 @@ lizz add github \
 	--cluster-role
 
 # Add an application with explicit values
-lizz add github
+lizz add github 
 	--owner=<organization> \
 	--fleet=<fleet repository name> \
 	--origin-url=<application url> \
@@ -101,4 +101,5 @@ lizz add github
 
 ### SEE ALSO
 
-- [lizz add](/docs/cli/lizz_add/) - Add an application
+* [lizz add](/docs/cli/lizz_add/)	 - Add an application
+

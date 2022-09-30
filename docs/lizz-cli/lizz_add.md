@@ -12,7 +12,7 @@ Add an application
 
 ### Synopsis
 
-The add command is used to add a Lizz-compatible application to the cluster. It updates the
+The add command is used to add a Lizz compatible application to the cluster. It updates the 
 fleet repository with the new application and creates a new repository for the new application.
 
 ### Options
@@ -52,7 +52,8 @@ fleet repository with the new application and creates a new repository for the n
 
 ### SEE ALSO
 
-- [lizz](/docs/cli/lizz/) -
-- [lizz add git](/docs/cli/lizz_add_git/) - Add an application from and to any Git server
-- [lizz add github](/docs/cli/lizz_add_github/) - Add an application from and to GitHub
-- [lizz add gitlab](/docs/cli/lizz_add_gitlab/) - Add an application from and to GitLab
+* [lizz](/docs/cli/lizz/)	 - 
+* [lizz add git](/docs/cli/lizz_add_git/)	 - Add an application from and to any Git server
+* [lizz add github](/docs/cli/lizz_add_github/)	 - Add an application from and to GitHub
+* [lizz add gitlab](/docs/cli/lizz_add_gitlab/)	 - Add an application from and to GitLab
+
