@@ -1,31 +1,31 @@
 ---
 sidebar_position: 4
-title: Create a Lizz compatible application
+title: Create a Lizz-compatible application
 ---
 
-# Create a Lizz compatible application
+# Create a Lizz-compatible application
 
-A Lizz compatible application is a Git repository that contains the manifest templates of the application.
+A Lizz-compatible application is a Git repository that contains the manifest templates of the application.
 When added, the application templates are rendered using values from the cluster and therefore the application is deployed with the best configuration possible.
-Once rendered, the Lizz compatible application corresponds to a [tenant repository](https://github.com/fluxcd/flux2-multi-tenancy/tree/dev-team) in the [multi-tenancy setup](http://localhost:3000/docs/concepts/multi_tenancy#multi-tenancy).
+Once rendered, the Lizz-compatible application corresponds to a [tenant repository](https://github.com/fluxcd/flux2-multi-tenancy/tree/dev-team) in the [multi-tenancy setup](http://localhost:3000/docs/concepts/multi_tenancy#multi-tenancy).
 
-This guide explains the main steps to create a Lizz compatible application.
-You can also have a look to the [existing applications](/applications/) before creating yours.
+This guide explains the main steps to create a Lizz-compatible application.
+You can also have a look at the [existing applications](/applications/) before creating yours.
 
 ## Create the repository
 
-As already said, a Lizz compatible application is a Git repository.
+As already said, a Lizz-compatible application is a Git repository.
 Therefore the first step to create one is to create a repository on GitHub or GitLab.
 
 ## Create the `lizz.yaml` file
 
-At the root of the repository, every Lizz compatible application needs to have its configuration file named `lizz.yaml`.
+At the root of the repository, every Lizz-compatible application needs to have its configuration file named `lizz.yaml`.
 
 This file contains the following.
 
 ### Application information
 
-First, the configuration file contains basic information about the application and its deployement. 
+First, the configuration file contains basic information about the application and its deployement.
 You have to define the name of the application, and can overwrite the namespace and the service account name used.
 
 ```yaml title="lizz.yaml"
@@ -36,12 +36,12 @@ serviceAccountName: <service account name used to deploy the application, defaul
 
 ### Values
 
-Second, it contains all the values needed to render the application. 
+Second, it contains all the values needed to render the application.
 To know all the available values, refeer to the [Values page of the documentation](http://localhost:3000/docs/concepts/values).
 
 The values can later be used to render the applications templates but also the rest of the configuration file itself.
 
-For example, here are the values of the [Vaultwarden application](https://github.com/Openlizz/application-vaultwarden/blob/main/lizz.yaml): 
+For example, here are the values of the [Vaultwarden application](https://github.com/Openlizz/application-vaultwarden/blob/main/lizz.yaml):
 
 ```yaml title="lizz.yaml"
 values:
@@ -91,7 +91,7 @@ values:
     - name: smtpSecure
       repository: github.com/openlizz/application-smtp-server
       path: base/configmap.yaml
-      keys: ["data", "secure"]  
+      keys: ["data", "secure"]
   applicationSecrets:
     - destinationPath: base/postgres_secret.yaml
       originPath: base/secret.yaml
@@ -116,15 +116,15 @@ values:
 
 You can define the dependencies of the application in two ways.
 
-The first one is using the `dependencies` field. 
+The first one is using the `dependencies` field.
 This field accepts an array of booleans and they all need to be true in order the application to be added.
 The booleans are usually values defined previously.
 
 ```yaml title="lizz.yaml"
 dependencies:
-  - {{ index . "valueNameX" }}
-  - {{ index . "valueNameY" }}
-  - {{ index . "valueNameZ" }}
+  - {{index . "valueNameX"}}
+  - {{index . "valueNameY"}}
+  - {{index . "valueNameZ"}}
 ```
 
 The second one is the `dependsOn` field which corresponds to the usual Kubernetes `dependsOn` field.
@@ -140,7 +140,7 @@ dependsOn:
 
 ### Encryption
 
-The last available configuration is encryption. 
+The last available configuration is encryption.
 If your application contains secret files that need to be encrypted in order to be stored in Git, these files need to be listed in the `encryption` field as follows:
 
 ```yaml title="lizz.yaml"
@@ -152,11 +152,11 @@ encryption:
 
 ## Application files
 
-In addition to the configuration file, a Lizz compatible application contains the application template files.
+In addition to the configuration file, a Lizz-compatible application contains the application template files.
 
 ### Templates
 
-The application template files can be any Kubernetes manifest organised as you want. 
+The application template files can be any Kubernetes manifest organised as you want.
 The repository only needs to contain one [Kustomization file](https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/) that points to the other files.
 
 All the files are rendered using a mechanism similar to the [Helm chart template mechanism](https://helm.sh/docs/chart_template_guide/getting_started/) using the [values](#values) defined in the `lizz.yaml` file.

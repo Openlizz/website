@@ -5,14 +5,14 @@ title: Applications
 
 import TemplatingSvg from "@site/static/img/illustrations/templating.svg";
 
-# Lizz compatible application
+# Lizz-compatible application
 
-A Lizz compatible application is an application that can be added with the `lizz add` command.
-There are some concepts and requirements which are explained in this page.
+A Lizz-compatible application is an application that can be added with the `lizz add` command.
+There are some concepts and requirements which are explained on this page.
 
 ## Tenant repository
 
-As explained [previously](./multi_tenancy), Lizz follows the multi-tenant structure and each application is associated to a tenant.
+As explained [previously](./multi_tenancy), Lizz follows the multi-tenant structure and each application is associated with a tenant.
 Concretely, this means that an application is a Git repository.
 The repository contains the application manifests which can be any Kubernetes resources (Deployment, Pod, HelmRelease, etc...).
 It only needs to contain a [Kustomization resource](https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/) that points to the other resources.
@@ -33,13 +33,13 @@ For example, the repository structure of the [Nextcloud application](https://git
 ```
 
 The `base` folder contains the manifests of the application and a Kustomization resource.
-The `default` folder contains the default Kustomization resource that simply point to the `base` folder without any kustomization of the manifests.
-It is possible to add other folders with other Kustomization resources depending on the use cases, for example a specific configuration of the application for a specific cloud provider.
-The `lizz.yaml` file is the Lizz configuration file which is explained later in this page.
+The `default` folder contains the default Kustomization resource that simply points to the `base` folder without any kustomization of the manifests.
+It is possible to add other folders with other Kustomization resources depending on the use cases, for example, a specific configuration of the application for a specific cloud provider.
+The `lizz.yaml` file is the Lizz configuration file which is explained later on this page.
 
 ## Application template
 
-A Lizz compatible application is automatically configured according to the cluster in which it will be added.
+A Lizz-compatible application is automatically configured according to the cluster in which it will be added.
 This mechanism works similarly to [Helm chart template mechanism](https://helm.sh/docs/chart_template_guide/getting_started/).
 
 <TemplatingSvg className="illuSvg" />
@@ -72,7 +72,7 @@ The values are passed to the templates as a map (`map[string]interface{}`) and c
 {{ index . "<Name of the value>" }}
 ```
 
-It is possible to create complexe flow as described in the [Helm documentation](https://helm.sh/docs/chart_template_guide/control_structures/).
+It is possible to create complex flow as described in the [Helm documentation](https://helm.sh/docs/chart_template_guide/control_structures/).
 Here is an example with the beginning of the `release.yaml` file of the [Homer application](https://github.com/Openlizz/application-homer):
 
 ```yaml title="base/release.yaml"

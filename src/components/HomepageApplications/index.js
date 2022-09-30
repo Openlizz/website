@@ -9,10 +9,10 @@ export default function HomepageApplications() {
         <div className="row">
           <div className="col col-6">
             <h1 className="margin-vert--lg">
-              Discover the Lizz compatible applications 🌈
+              Discover the Lizz-compatible applications 🌈
             </h1>
             <h2>
-              A Lizz compatible application is a Git repository that contains
+              A Lizz-compatible application is a Git repository that contains
               the manifest templates of the application.
             </h2>
             <h2>
@@ -21,8 +21,8 @@ export default function HomepageApplications() {
               the best configuration possible.
             </h2>
             <h2>
-              There are already many Lizz compatible applications and more are
-              to come! You can also make your applications Lizz compatible in
+              There are already many Lizz-compatible applications and more are
+              to come! You can also make your applications Lizz-compatible in
               only a couple of steps.
             </h2>
             <Link

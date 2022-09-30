@@ -11,7 +11,7 @@ function ApplicationsHeader() {
   return (
     <section className={`margin-top--lg margin-bottom--lg text--center`}>
       <h1>Applications</h1>
-      <p>Discover the Lizz compatible applications 🌈</p>
+      <p>Discover the Lizz-compatible applications 🌈</p>
     </section>
   );
 }
@@ -85,7 +85,7 @@ export default function ApplicationsPage() {
   return (
     <Layout
       title={`Applications`}
-      description="Discover the Lizz compatible applications."
+      description="Discover the Lizz-compatible applications."
     >
       <main className={`padding-vert--lg ${styles.main}`}>
         <ApplicationsHeader />

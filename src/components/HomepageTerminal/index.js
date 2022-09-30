@@ -33,7 +33,7 @@ export default function HomepageTerminal() {
                 <h2>• manage Kubernetes secrets with Mozilla SOPS,</h2>
               </li>
               <li>
-                <h2>• add Lizz compatible applications.</h2>
+                <h2>• add Lizz-compatible applications.</h2>
               </li>
             </ul>
             <Link

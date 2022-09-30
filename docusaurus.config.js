@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "Openlizz",
   tagline:
-    "Manage a GitOps Kubernetes cluster and deploy applications has never made so easy!",
+    "Managing a GitOps Kubernetes cluster and deploying applications has never been made so easy!",
   url: "https://openlizz.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
