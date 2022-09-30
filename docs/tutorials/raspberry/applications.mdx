@@ -1,0 +1,201 @@
+---
+sidebar_position: 3
+title: Add the applications
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Add the applications to your cluster
+
+Now that the Ingress controller is correctly setup and you have a trusted certificate, you can continue with the add of the applications.
+
+## Add the domain name application
+
+The [domain name application](https://github.com/Openlizz/application-domain-name) is a very simple application.
+Its only purpose is to contain the domain name value that can later be used by other applications.
+
+The domain name value is a [user value](../../concepts/values#user-value) that has to be given to the application using the `--set-value` flag.
+You can use the value you want, for example `home.cluster`.
+
+```
+lizz add github \
+    --owner=$GITHUB_USER \
+    --fleet=fleet \
+    --origin-url=https://github.com/openlizz/application-domain-name \
+    --path=./ \
+    --destination=domain-name \
+    --set-value value="home.cluster"
+```
+
+## Add the Photoprism, Nextloud, Vaultwarden, and Homer applications
+
+The [Photoprism application](https://github.com/Openlizz/application-photoprism/) deploys [Photoprism](https://photoprism.app/), the [Nextloud application](https://github.com/Openlizz/application-nextcloud) deploys [Nextloud](https://nextcloud.com/), the [Vaultwarden application](https://github.com/Openlizz/application-vaultwarden) deploys [Vaultwarden](https://github.com/dani-garcia/vaultwarden) and the [Homer application](https://github.com/Openlizz/application-homer) deploys [Homer](https://github.com/bastienwirtz/homer).
+
+Those four applications do not require a particular setup and can be added using the following commands:
+
+```
+lizz add github \
+    --owner=$GITHUB_USER  \
+    --fleet=fleet \
+    --origin-url=https://github.com/openlizz/application-photoprism \
+    --path=./default \
+    --destination=photoprism
+
+lizz add github \
+    --owner=$GITHUB_USER  \
+    --fleet=fleet \
+    --origin-url=https://github.com/openlizz/application-nextcloud \
+    --path=./default \
+    --destination=nextcloud
+
+lizz add github \
+    --owner=$GITHUB_USER  \
+    --fleet=fleet \
+    --origin-url=https://github.com/openlizz/application-vaultwarden \
+    --path=./default \
+    --destination=vaultwarden
+
+lizz add github \
+    --owner=$GITHUB_USER  \
+    --fleet=fleet \
+    --origin-url=https://github.com/openlizz/application-homer \
+    --path=./default \
+    --destination=homer
+```
+
+:::info
+
+The outputs of these commands contain passwords that you need to store in order to connect to the applications.
+
+For example for Nextcloud:
+
+```
+ → adminPassword — Password for the admin account.
+ → J8a375Qe9kYj
+```
+
+Note that you can also always find the passwords afterwards in the Kubernetes secrets.
+
+:::
+
+## Reconcile the fleet repository
+
+With the add command, Lizz creates the application repositories and updates the fleet repository but Lizz does not interact with Kubernetes and therefore the applications are not deployed yet.
+
+The deployement is made by Flux and you can force Flux to reconcile and deploy the applications now by running:
+
+```
+flux reconcile source git flux-system
+```
+
+This will start the deployment process.
+You can watch the applications deployment with:
+
+```
+kubectl get helmreleases -A
+```
+
+After some time, the output should be similar to:
+
+```
+NAMESPACE         NAME           AGE    READY   STATUS
+longhorn-system   longhorn       128m   True    Release reconciliation succeeded
+cert-manager      cert-manager   112m   True    Release reconciliation succeeded
+photoprism        photoprism     106m   True    Release reconciliation succeeded
+homer             homer          105m   True    Release reconciliation succeeded
+vaultwarden       vaultwarden    95m    True    Release reconciliation succeeded
+nextcloud         nextcloud      89m    True    Release reconciliation succeeded
+```
+
+You can check that the pods are running with:
+
+```
+kubectl get pod --all-namespaces
+```
+
+After a couple of minutes, the output should be similar to:
+
+```
+NAMESPACE         NAME                                           READY   STATUS      RESTARTS       AGE
+[...]
+ingress-nginx     ingress-nginx-admission-create-jqvhq           0/1     Completed   0              115m
+ingress-nginx     ingress-nginx-admission-patch-qgmkq            0/1     Completed   2              115m
+ingress-nginx     ingress-nginx-controller-b7b55cccc-5wt97       1/1     Running     0              115m
+cert-manager      cert-manager-cainjector-9cc6bbc8b-zxx29        1/1     Running     0              113m
+cert-manager      cert-manager-ddd4d6ddf-2tt4h                   1/1     Running     0              113m
+cert-manager      cert-manager-webhook-678c96cb8f-z9p8x          1/1     Running     0              113m
+photoprism        photoprism-86b879b6b7-xwmrq                    1/1     Running     0              107m
+homer             homer-6dfdd5b4cd-5c2hf                         1/1     Running     0              105m
+vaultwarden       vaultwarden-8c66cf5b6-gj2vn                    1/1     Running     0              96m
+nextcloud         nextcloud-75fbd579b-gtnf4                      1/1     Running     1 (89m ago)    90m
+```
+
+## Automatic configuration
+
+When added to the cluster, the applications have been configured in function of the cluster state.
+
+For example, Nextcloud has been configured:
+
+- with the domain name from the domain name application,
+- with the ingress information from the Nginx, the cert-manager, and the cluster-issuer applications to work with HTTPS,
+
+You have applications deployed in your cluster that are already configured and ready to use without effort.
+
+## Access the applications
+
+The Photoprism, Nextloud, Vaultwarden, and Homer applications are exposed to internet via ingresses.
+You can get all the ingresses in your cluster by running:
+
+```
+kubectl get ingress --all-namespaces
+```
+
+The output should be:
+
+```
+NAMESPACE     NAME          CLASS    HOSTS                      ADDRESS         PORTS     AGE
+photoprism    photoprism    <none>   photoprism.home.cluster    192.168.1.165   80, 443   108m
+homer         homer         <none>   homer.home.cluster         192.168.1.165   80, 443   106m
+vaultwarden   vaultwarden   <none>   vaultwarden.home.cluster   192.168.1.165   80, 443   97m
+nextcloud     nextcloud     <none>   nextcloud.home.cluster     192.168.1.165   80, 443   91m
+```
+
+Under the `ADDRESS` column, you find the IP address of the NodePort.
+You can add an entry in your `/etc/hosts` file to redirect all the `HOSTS` to the IP address.
+For example, here you would have to add the following line in your `/etc/hosts` file:
+
+```
+192.168.1.165 homer.home.openlizz.com nextcloud.home.openlizz.com photoprism.home.openlizz.com vaultwarden.home.openlizz.com
+```
+
+To access the applications, the last thing is to obtain the port of the NodePort corresponding to HTTPS.
+To do this run the following:
+
+```
+kubectl -n ingress-nginx get svc ingress-nginx-controller
+```
+
+The output should be similar to:
+
+```
+NAME                       TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
+ingress-nginx-controller   NodePort   10.43.28.208   <none>        80:30967/TCP,443:31251/TCP   130m
+```
+
+Here the port corresponding to HTTPS is 31251.
+
+You have now all the information to access your applications. For Nextcloud, the URL is in this example: [https://nextcloud.home.cluster:31251](https://nextcloud.home.cluster:31251).
+
+## Use the applications
+
+To use the applications, refeer to the usage section of the applications' repositories.
+
+For Nextcloud, you can access Nextcloud via the previous URL and can connect using the admin password (from the add command output).
+
+![Nextcloud log in page](./img/applications/nextcloud.png)
+
+You can also look at the Homer homepage and should see something similar to:
+
+![Homer application screenshot](./img/applications/homer_dark.png#dark-mode-only)
+![Homer application screenshot](./img/applications/homer_light.png#light-mode-only)

@@ -271,7 +271,4 @@ You should see something similar to:
 
 In this tutorial, you have seen how to setup your cluster to work with Lizz in a multi-tenant GitOps setup powered by Flux.
 
-To continue to discover Lizz and its power, you can have a look to the following resources:
-
-- other tuto #1
-- other tuto #2
+To continue to discover Lizz and its power, you can have a look to the rest of the documentation.
