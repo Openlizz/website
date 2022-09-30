@@ -8,10 +8,22 @@ description: ""
 
 ## lizz secret-management gitlab
 
+Configure secret management for GitLab
 
+### Synopsis
+
+The secret-management command is used to configure Kubernetes secrets management with Mozilla SOPS. It generates a age key, store the public key in the GitLab fleet repository, and store the private key in a yaml file to apply it.
 
 ```
 lizz secret-management gitlab [flags]
+```
+
+### Examples
+
+```
+# Configure secret management
+lizz secret-management gitlab --owner=<group>  --fleet=<fleet repository name>
+kubectl apply -f secret.yaml
 ```
 
 ### Options
@@ -42,5 +54,5 @@ lizz secret-management gitlab [flags]
 
 ### SEE ALSO
 
-* [lizz secret-management](/docs/cli/lizz_secret-management/)	 - 
+* [lizz secret-management](/docs/cli/lizz_secret-management/)	 - Configure secret management
 

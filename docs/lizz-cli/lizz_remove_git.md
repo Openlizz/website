@@ -8,7 +8,11 @@ description: ""
 
 ## lizz remove git
 
+Remove an application from any Git server
 
+### Synopsis
+
+The remove command is used to remove an application already added to the cluster. The remove command does not delete the application repository.
 
 ```
 lizz remove git [flags]
@@ -37,5 +41,5 @@ lizz remove git [flags]
 
 ### SEE ALSO
 
-* [lizz remove](/docs/cli/lizz_remove/)	 - 
+* [lizz remove](/docs/cli/lizz_remove/)	 - Remove an application
 
