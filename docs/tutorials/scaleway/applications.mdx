@@ -40,7 +40,7 @@ lizz add github \
 The [cert-manager application](https://github.com/Openlizz/application-cert-manager) installed the [cert-manager helm chart](https://cert-manager.io/docs/installation/helm/) in your cluster.
 It is a certificate controller for Kubernetes and will allow you to obtain a TLS certificate to enable HTTPS.
 
-The [cluster-issuer application](https://github.com/Openlizz/application-cluster-issuer) is couple with the cert-manager application and installed the [cluster issuer](https://cert-manager.io/docs/configuration/) of your choice depending of the `--path` used.
+The [cluster-issuer application](https://github.com/Openlizz/application-cluster-issuer) is coupled with the cert-manager application and installed the [cluster issuer](https://cert-manager.io/docs/configuration/) of your choice depending of the `--path` used.
 When adding the application, replace `<your email address>` with your email address.
 
 :::info
@@ -84,12 +84,6 @@ lizz add github \
     --destination=postgresql \
     --personal
 ```
-
-<!-- ## SMTP server
-
-```
-lizz add github --owner=$GITHUB_USER  --fleet=fleet --origin-url=https://github.com/openlizz/application-smtp-server --path=./ --destination=smtp --set-value host=smtp.sendgrid.net,secure=ssl,port=465,domain=openlizz.com,smtpUsername=apikey,smtpPassword=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
-``` -->
 
 ## Add the Photoprism, Nextloud, Vaultwarden, and Homer applications
 
