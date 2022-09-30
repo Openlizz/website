@@ -43,7 +43,7 @@ The output should be similar to:
 
 ```
 flux version 0.33.0
-lizz version 0.0.0-dev.0
+lizz version 0.0.1
 kind version 0.14.0
 Client Version: version.Info{Major:"1", Minor:"25", GitVersion:"v1.25.0", GitCommit:"a866cbe2e5bbaa01cfd5e969aa3e033f3282a8a2", GitTreeState:"clean", BuildDate:"2022-08-23T17:36:43Z", GoVersion:"go1.19", Compiler:"gc", Platform:"darwin/arm64"}
 Kustomize Version: v4.5.7
