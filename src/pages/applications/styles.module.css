@@ -48,7 +48,7 @@
   gap: 0.25rem;
   --ifm-button-background-color: var(--ifm-footer-background-color);
   --ifm-button-border-color: var(--ifm-footer-background-color);
-  --ifm-button-color: var(--ifm-footer-title-color);
+  --ifm-button-color: var(--ifm-font-color-base);
 }
 
 .button svg {
