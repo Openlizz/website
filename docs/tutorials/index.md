@@ -16,6 +16,6 @@ Click [here](/docs/category/deploy-applications-in-scaleway) to start this tutor
 
 ## Manage your Rasberry Pis cluster
 
-The first tutorial shows all the steps to create and manage a Rasberry Pis cluster to create your homelab with Rasberry Pis and Lizz.
+The second tutorial shows all the steps to create and manage a Rasberry Pis cluster to create your homelab with Rasberry Pis and Lizz.
 
 Click [here](/docs/category/manage-your-rasberry-pis-cluster) to start this tutorial now.
