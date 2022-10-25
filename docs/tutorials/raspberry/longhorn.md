@@ -16,7 +16,7 @@ Add Longhorn to your cluster with Lizz using the following command:
 
 ```
 lizz add github \
-    --owner=$GITHUB_USER \
+    --owner=$GITHUB_ORG \
     --fleet=fleet \
     --origin-url=https://github.com/openlizz/application-longhorn \
     --path=./default \
